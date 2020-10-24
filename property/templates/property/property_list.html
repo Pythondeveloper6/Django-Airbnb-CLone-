@@ -126,7 +126,7 @@
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="hotel-single.html">{{property}}</a></h3>
+											<h3><a href="{{property.get_absolute_url}}">{{property}}</a></h3>
 											<p class="rate">
 												<i class="icon-star"></i>
 												<i class="icon-star"></i>
@@ -137,14 +137,14 @@
 											</p>
 										</div>
 										<div class="two">
-											<span class="price per-price">$40<br><small>/night</small></span>
+											<span class="price per-price">${{property.price}}<br><small>/night</small></span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
+									<p>{{property.description}}</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span>
-										<span class="ml-auto"><a href="#">Book Now</a></span>
+										<span><i class="icon-map-o"></i> {{property.place}}</span>
+										<span class="ml-auto"><a href="{{property.get_absolute_url}}">Book Now</a></span>
 									</p>
 								</div>
 							</div>

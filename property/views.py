@@ -15,3 +15,11 @@ class PropertyDetail(DetailView):
     model = Property
 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["property_images"] = PropertyImages.objects.filter(property=self.get_object().id)
+        print(context["property_images"])
+        return context
+    
+
+
