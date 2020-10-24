@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils.text import slugify
 # Create your models here.
 
 class Property(models.Model):
@@ -12,8 +13,17 @@ class Property(models.Model):
     image = models.ImageField(upload_to='propery/')
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
 
+
+    slug = models.SlugField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+
+
+    def save(self, *args, **kwargs):
+        if not self.slug and self.title:
+            self.slug = slugify(self.title)
+       super(Property, self).save(*args, **kwargs) # Call the real save() method
+
 
 
     def __str__(self):
