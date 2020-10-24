@@ -1,13 +1,13 @@
 - main categories [reaturant - hotel - shopping]
 - property : 
-    - title
-    - price 
+    - title .
+    - price .
     - rating
-    - description 
-    - place 
-    - main image
-    - images
-    - categoryu
+    - description  .
+    - place  .
+    - main image .
+    - images  .
+    - category .
     - book form 
 
 
