@@ -20,9 +20,9 @@ class Property(models.Model):
 
 
     def save(self, *args, **kwargs):
-        if not self.slug and self.title:
+        if self.title:
             self.slug = slugify(self.title)
-       super(Property, self).save(*args, **kwargs) # Call the real save() method
+        super(Property, self).save(*args, **kwargs) # Call the real save() method
 
 
 
