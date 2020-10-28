@@ -73,6 +73,14 @@ class PropertyReview(models.Model):
 
 
 
+PEOPLE_TYPE = (
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4)
+)
+
+
 
 class PropertyBook(models.Model):
     property = models.ForeignKey(Property, related_name='property_book', on_delete=models.CASCADE)
@@ -80,8 +88,8 @@ class PropertyBook(models.Model):
     email = models.EmailField( max_length=254)
     date_from = models.DateField(default=timezone.now)
     date_to =  models.DateField(default=timezone.now)
-    guest = models.IntegerField(default=1)
-    children = models.IntegerField(default=0)
+    guest = models.IntegerField(default=1 , choices=PEOPLE_TYPE)
+    children = models.IntegerField(default=0 , choices=PEOPLE_TYPE)
 
 
     def __str__(self):
