@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('property/' , include('property.urls' , namespace='property'))
+    path('property/' , include('property.urls' , namespace='property')),
+    path('summernote/', include('django_summernote.urls')),
 
 ]

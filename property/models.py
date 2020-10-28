@@ -9,7 +9,7 @@ from django.utils import timezone
 class Property(models.Model):
     owner = models.ForeignKey(User, related_name='property_owner', on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    description = models.TextField(max_length=2000)
+    description = models.TextField(max_length=12000)
     price = models.IntegerField()
     place = models.CharField(max_length=50)
     image = models.ImageField(upload_to='propery/')

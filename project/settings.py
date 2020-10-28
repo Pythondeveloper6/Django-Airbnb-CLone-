@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'property',
     "bootstrap4",
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,39 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR , "media")
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'width': '800px',
+        'height': '400px',
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'clear', ]],
+            ['color', ['forecolor', 'backcolor', ]],
+            ['misc', ['picture', 'fullscreen', 'codeview', 'print', 'help', ]],
+        ],
+    },
+    'js': (
+        '/static/summernote-ext-print.js',
+    ),
+    'js_for_inplace': (
+        '/static/summernote-ext-print.js',
+    ),
+    'css': (
+        '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/theme/base16-dark.min.css',
+    ),
+    'css_for_inplace': (
+        '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.40.0/theme/base16-dark.min.css',
+    ),
+    'codemirror': {
+        'theme': 'base16-dark',
+        'mode': 'htmlmixed',
+        'lineNumbers': 'true',
+    },
+    'lazy': False,
+}
