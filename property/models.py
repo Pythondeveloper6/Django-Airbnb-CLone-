@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils.text import slugify
 from django.urls import reverse
+from django.utils import timezone
 # Create your models here.
 
 class Property(models.Model):
@@ -65,6 +66,22 @@ class PropertyReview(models.Model):
     author = models.ForeignKey(User, related_name='review_owner', on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=0 ,  validators=[MaxValueValidator(5)])
     feedback = models.TextField(default='' , max_length=200)
+
+
+    def __str__(self):
+        return self.property.title
+
+
+
+
+class PropertyBook(models.Model):
+    property = models.ForeignKey(Property, related_name='property_book', on_delete=models.CASCADE)
+    name = models.CharField(max_length=50) 
+    email = models.EmailField( max_length=254)
+    date_from = models.DateField(default=timezone.now)
+    date_to =  models.DateField(default=timezone.now)
+    guest = models.IntegerField(default=1)
+    children = models.IntegerField(default=0)
 
 
     def __str__(self):

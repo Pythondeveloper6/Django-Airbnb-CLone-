@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import ListView , DetailView
+from django.views.generic.edit import FormMixin
 from .models import Property , PropertyImages , PropertyReview , Category
+from .forms import PropertyBookForm
 
 
 
@@ -11,9 +13,9 @@ class PropertyList(ListView):
 
 
 
-class PropertyDetail(DetailView):
+class PropertyDetail(FormMixin , DetailView):
     model = Property
-
+    form_class = PropertyBookForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,6 +24,10 @@ class PropertyDetail(DetailView):
 
         print(context['get_related'])
         return context
+
+
+    def post(self, request, *args, **kwargs):
+        pass
     
 
 

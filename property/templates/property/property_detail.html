@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap4 %}
 {% block body %}
 
 <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_5.jpg' %});">
@@ -55,6 +56,8 @@
 
 					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 						<h4 class="mb-5">Check Availability &amp; Booking</h4>
+						{% comment '' %}
+						
 						<div class="fields">
 							<div class="row">
 								<div class="col-md-6">
@@ -113,6 +116,14 @@
 								</div>
 							</div>
 						</div>
+						{% endcomment %}
+						<form method=POST>
+						 {% csrf_token %}
+						     {% bootstrap_form form %}
+							{% buttons %}
+								<button type="submit" class="btn btn-primary py-3">Check Availability</button>
+							{% endbuttons %}
+						</form>
 					</div>
 					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 						<h4 class="mb-4">Review &amp; Ratings</h4>
