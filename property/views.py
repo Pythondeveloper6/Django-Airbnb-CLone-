@@ -13,7 +13,7 @@ from django.contrib import messages
 
 class PropertyList(ListView):
     model = Property
-    paginate_by = 2
+    paginate_by = 1
 
 
 
