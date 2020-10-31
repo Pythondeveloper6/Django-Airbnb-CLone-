@@ -38,7 +38,17 @@
           <li class="nav-item"><a href="hotel.html" class="nav-link">Hotels</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Add listing</span></a></li>
+          
+          {% if request.user.is_authenticated %}
+            <li class="nav-item cta"><a href="{% url 'accounts:profile' %}" class="nav-link"><span>Profile</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'logout' %}" class="nav-link"><span>Logout</span></a></li>
+          
+            {% else %}
+            <li class="nav-item cta"><a href="{% url 'login' %}" class="nav-link"><span>Login</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'accounts:signup' %}" class="nav-link"><span>Signup</span></a></li>
+          {% endif %}
+            
+
         </ul>
       </div>
     </div>

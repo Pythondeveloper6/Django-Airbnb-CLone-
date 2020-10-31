@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +133,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR , "media")
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+
+# LOGIN_REDIRECT_URL = '/accounts/profile'
 
 SUMMERNOTE_THEME = 'bs4'
 SUMMERNOTE_CONFIG = {
