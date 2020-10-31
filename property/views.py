@@ -6,6 +6,8 @@ from django.views.generic.edit import FormMixin
 from .models import Property , PropertyImages , PropertyReview , Category
 from .forms import PropertyBookForm
 from django.urls import reverse
+from django.contrib import messages
+
 
 
 
@@ -33,6 +35,7 @@ class PropertyDetail(FormMixin , DetailView):
             myform = form.save(commit=False)
             myform.property = self.get_object()
             myform.save()
+            messages.success(request, 'Your Reservation Confirmed ')
 
             ### send gmail message
 
