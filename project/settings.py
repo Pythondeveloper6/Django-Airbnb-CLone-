@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'property',
     "bootstrap4",
     'django_summernote',
+    'blog',
+    'taggit',
+    'django_seed',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 # Create your views here.
-from django.views.generic import ListView , DetailView
+from django.views.generic import ListView , DetailView , CreateView
 from django.views.generic.edit import FormMixin
 from .models import Property , PropertyImages , PropertyReview , Category
 from .forms import PropertyBookForm
@@ -13,7 +13,7 @@ from django.contrib import messages
 
 class PropertyList(ListView):
     model = Property
-    paginate_by = 1
+    paginate_by = 4
 
 
 
@@ -44,3 +44,19 @@ class PropertyDetail(FormMixin , DetailView):
     
 
 
+class NewProperty(CreateView):
+    model = Property
+    fields = ['title','description','price','place','image', 'category']
+
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.owner = request.user
+            myform.save()
+            messages.success(request, 'Successfully Added Your Property')
+
+            ### send gmail message
+
+            return redirect(reverse('property:property_list'))
