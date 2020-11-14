@@ -8,6 +8,7 @@ from taggit.models import Tag
 
 class PostList(ListView):
     model = Post
+    paginate_by = 8
 
 
 
