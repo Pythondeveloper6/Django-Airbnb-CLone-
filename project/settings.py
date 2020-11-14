@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'blog',
     'taggit',
     'django_seed',
+    'settings',
 ]
 
 MIDDLEWARE = [

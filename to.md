@@ -1,0 +1,9 @@
+- images 
+- site filter
+- check avaiblity information 
+- rating 
+- blog : category  
+- blog : search 
+- blog : comments
+- about
+- contact 
