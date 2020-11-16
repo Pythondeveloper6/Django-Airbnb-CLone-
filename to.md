@@ -1,9 +1,6 @@
-- images 
-- site filter
+- faq sed data
 - check avaiblity information 
 - rating 
-- blog : category  
 - blog : search 
 - blog : comments
-- about
 - contact 

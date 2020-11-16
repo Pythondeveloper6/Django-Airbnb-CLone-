@@ -67,7 +67,7 @@
                 <h3>Categories</h3>
                 
                 {% for category in categories %}
-                  <li><a href="#">{{category}} <span>(12)</span></a></li>
+                  <li><a href="#">{{category}} <span>{{category.post_count}}</span></a></li>
                 {% endfor %}
                   
                 

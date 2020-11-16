@@ -6,7 +6,7 @@ from settings.models import FAQ
 
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE" , "project.settings")
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.settings')
 django.setup()
 
 

@@ -7,13 +7,18 @@ from .models import Property , PropertyImages , PropertyReview , Category
 from .forms import PropertyBookForm
 from django.urls import reverse
 from django.contrib import messages
+from .filters import PropertyFilter
+from django_filters.views import FilterView
 
 
-
-
-class PropertyList(ListView):
+class PropertyList(FilterView):
     model = Property
     paginate_by = 4
+    filterset_class = PropertyFilter
+    template_name = 'property/property_list.html'
+
+
+    
 
 
 
