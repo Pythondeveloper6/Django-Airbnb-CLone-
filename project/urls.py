@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('api-auth/', include('rest_framework.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/' , include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
@@ -27,7 +28,6 @@ urlpatterns = [
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
     path('about/' , include('settings.urls' , namespace='about')),
-
 
 ]
 
