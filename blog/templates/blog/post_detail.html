@@ -55,10 +55,10 @@
           </div> <!-- .col-md-8 -->
           <div class="col-md-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="{% url 'blog:post_list' %}" class="search-form">
+              <form action="{% url 'blog:post_list' %}" method="GET" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <input type="text" class="form-control" name="q" placeholder="Type a keyword and hit enter">
                 </div>
               </form>
             </div>

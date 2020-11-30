@@ -1,7 +1,6 @@
 - faq sed data
 - check avaiblity information 
 - rating 
-- blog : search 
 - blog : comments
 - contact 
 - contact api 

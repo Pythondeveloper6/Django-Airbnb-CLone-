@@ -8,6 +8,7 @@ app_name = 'settings'
 
 urlpatterns = [
     path( '',views.home , name='home' ),    
+    path( '/search',views.home_search , name='home_search' ),    
     path( 'about/',views.AboutView.as_view() , name='about' ),
 
     path( 'about/api',api_view.about_api , name='about_api' ),

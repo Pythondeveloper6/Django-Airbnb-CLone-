@@ -4,6 +4,7 @@ from .models import FAQ , About
 from property import models as property_models
 from blog import models as blog_models
 from django.contrib.auth.models import User
+from django.db.models import Q
 # Create your views here.
 
 
@@ -22,6 +23,8 @@ def home(request):
     villa_count = property_models.Property.objects.filter(category__name='Vella').count()
     suits_count = property_models.Property.objects.filter(category__name='suite').count()
 
+
+
     return render(request,'settings/index.html', {
         'property_category': property_category , 
         'recent_posts' : recent_posts , 
@@ -34,6 +37,21 @@ def home(request):
         'villa_count' : villa_count  , 
         'suits_count' : suits_count
     })
+
+
+
+def home_search(request):
+    name = request.GET.get('q','')
+    location = request.GET['location']
+
+    search_result = property_models.Property.objects.filter(
+            Q(title__icontains=name) | 
+            Q(description__icontains=name) &
+            Q(place__icontains=location)
+    )
+
+    return render(request,'settings/home_search.html',{'search_result': search_result})
+
 
 
 
