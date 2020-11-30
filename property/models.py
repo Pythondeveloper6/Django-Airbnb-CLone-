@@ -85,8 +85,7 @@ PEOPLE_TYPE = (
 
 class PropertyBook(models.Model):
     property = models.ForeignKey(Property, related_name='property_book', on_delete=models.CASCADE)
-    name = models.CharField(max_length=50) 
-    email = models.EmailField( max_length=254)
+    name = models.ForeignKey(User, related_name='user_book', on_delete=models.CASCADE) 
     date_from = models.DateField(default=timezone.now)
     date_to =  models.DateField(default=timezone.now)
     guest = models.IntegerField(default=1 , choices=PEOPLE_TYPE)
@@ -95,3 +94,7 @@ class PropertyBook(models.Model):
 
     def __str__(self):
         return self.property.title
+
+
+
+            # name = models.ForeignKey(User, related_name='user_book', on_delete=models.CASCADE)

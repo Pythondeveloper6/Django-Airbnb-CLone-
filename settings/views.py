@@ -44,10 +44,12 @@ def home_search(request):
     name = request.GET.get('q','')
     location = request.GET['location']
 
+
     search_result = property_models.Property.objects.filter(
-            Q(title__icontains=name) | 
-            Q(description__icontains=name) &
-            Q(place__icontains=location)
+            Q(place__icontains=location) &
+            Q(title__icontains=name) 
+            # Q(description__icontains=name) 
+
     )
 
     return render(request,'settings/home_search.html',{'search_result': search_result})

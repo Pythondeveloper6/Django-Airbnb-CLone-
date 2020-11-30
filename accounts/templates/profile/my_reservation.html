@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block body %}
+
+
+
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_5.jpg' %});">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+			data-scrollax-parent="true">
+			<div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+				<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+						class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
+				<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{my_category|title}}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					
+					{% for property in user_reservation %}	
+						<div class="col-md-4 ftco-animate">
+							<div class="destination">
+								<a href="{{property.get_absolute_url}}"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url('{{property.property.image.url}}');">
+									<div class="icon d-flex justify-content-center align-items-center">
+										<span class="icon-search2"></span>
+									</div>
+								</a>
+								<div class="text p-3">
+									<div class="d-flex">
+										<div class="one">
+											<h3><a href="{{property.get_absolute_url}}">{{property}}</a></h3>
+											<p class="rate">
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star"></i>
+												<i class="icon-star-o"></i>
+												<span>8 Rating</span>
+											</p>
+										</div>
+										<div class="two">
+											<span class="price per-price">${{property.property.price}}<br><small>/night</small></span>
+										</div>
+									</div>
+									<p>{{property.property.description|safe|truncatewords:5}}</p>
+									<hr>
+									<p class="bottom-area d-flex">
+										<span><i class="icon-map-o"></i> {{property.property.place}}</span>
+										<span class="ml-auto"><a href="">Write Your Feedback</a></span>
+									</p>
+								</div>
+							</div>
+                        </div>
+                    {% empty %}
+                        <h2> not available now ...</h2>
+					{% endfor %}
+				</div>
+
+				{% if is_paginated %}
+				<div class="row mt-5">
+					<div class="col text-center">
+						<div class="block-27">
+							<ul>
+								{% if page_obj.has_previous %}
+									<li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+								{% else %}
+									<li class="disabled"><span>&laquo;</span></li>
+								{% endif %}
+
+								{% for i in paginator.page_range %}
+									{% if page_obj.number == i %}
+										<li class="active"><span>{{ i }}</span></li>
+									{% else %}
+										<li><a href="?page={{ i }}">{{ i }}</a></li>
+									{% endif %}
+								{% endfor %}
+
+								{% if page_obj.has_next %}
+									<li><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+								{% else %}
+									<li class="disabled"><span>&raquo;</span></li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div> <!-- .col-md-8 -->
+		</div>
+	</div>
+</section> <!-- .section -->
+
+{% endblock body %}

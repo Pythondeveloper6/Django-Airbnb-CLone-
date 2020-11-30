@@ -8,4 +8,4 @@ class PropertyBookForm(forms.ModelForm):
     date_to = forms.DateField(widget= forms.DateInput(attrs={'id':'checkin_date'}))
     class Meta:
         model = PropertyBook
-        fields = ['name','email','date_from','date_to','guest','children']
+        fields = ['name','date_from','date_to','guest','children']
