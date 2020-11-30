@@ -12,7 +12,7 @@ urlpatterns = [
 
 
 
-    path('api/list' , api_view.post_list_api , name='post_list'),
-    path('api/list/<int:id>' , api_view.post_detail , name='post_detail'),
-    path('api/list/<str:query>' , api_view.post_search , name='post_search'),
+    path('api/list' , api_view.post_list_api , name='post_list_api'),
+    path('api/list/<int:id>' , api_view.post_detail , name='post_detail_api'),
+    path('api/list/<str:query>' , api_view.post_search , name='post_search_api'),
 ]

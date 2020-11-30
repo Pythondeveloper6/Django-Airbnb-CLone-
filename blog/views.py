@@ -12,6 +12,11 @@ class PostList(ListView):
     paginate_by = 8
 
 
+    def get_queryset(self):
+        name = self.kwargs.get('name','')
+        return super().get_queryset()
+    
+
 
 class PostDetail(DetailView):
     model = Post

@@ -50,7 +50,7 @@ class PropertyImages(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    icon = models.CharField(max_length=20 , blank=True, null=True)
+    icon = models.CharField(max_length=25 , blank=True, null=True)
     
     class Meta:
         verbose_name_plural = 'Categories'
