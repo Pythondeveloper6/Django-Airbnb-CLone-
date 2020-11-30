@@ -3,9 +3,12 @@ from .serializers import PostSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db.models import Q
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def post_list_api(request):
     all_posts = Post.objects.all()
     data = PostSerializer(all_posts , many=True).data
@@ -13,6 +16,7 @@ def post_list_api(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def post_detail(request,id):
     post = Post.objects.get(id=id)
     data = PostSerializer(post).data
@@ -20,6 +24,7 @@ def post_detail(request,id):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def post_search(request,query):
     posts = Post.objects.filter(
         Q(title__icontains=query) | Q(description__icontains=query)

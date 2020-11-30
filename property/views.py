@@ -65,3 +65,11 @@ class NewProperty(CreateView):
             ### send gmail message
 
             return redirect(reverse('property:property_list'))
+
+
+
+
+def property_by_category(request,category):
+    my_category = Category.objects.get(name=category)
+    property_categroy = Property.objects.filter(category=my_category)
+    return render(request , 'property/property_by_category.html' , {'property_categroy':property_categroy , 'my_category':my_category})

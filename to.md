@@ -4,3 +4,9 @@
 - blog : search 
 - blog : comments
 - contact 
+- contact api 
+- home
+- auth api 
+- translation 
+- api exceptions
+- home search
