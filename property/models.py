@@ -11,7 +11,7 @@ class Property(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=12000)
     price = models.IntegerField()
-    place = models.CharField(max_length=50)
+    place = models.ForeignKey('Place', related_name='property_place', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='propery/')
     category = models.ForeignKey('Category', related_name='property_category', on_delete=models.CASCADE)
     slug = models.SlugField(blank=True, null=True)
@@ -31,6 +31,22 @@ class Property(models.Model):
 
     def get_absolute_url(self):
         return reverse('property:property_detail' , kwargs={'slug':self.slug})
+
+
+
+class Place(models.Model):
+    name = models.CharField(max_length=50)
+    image = models.ImageField( upload_to='places/')
+
+    class Meta:
+        verbose_name = ("Place")
+        verbose_name_plural = ("Places")
+
+    def __str__(self):
+        return self.name
+
+
+
 
 
 

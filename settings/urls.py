@@ -13,4 +13,7 @@ urlpatterns = [
 
     path( 'about/api',api_view.about_api , name='about_api' ),
     path( 'about/api/faq',api_view.faq_api , name='faq_api' ),
+
+
+    path( 'contact',views.contact , name='contact' ),
 ]

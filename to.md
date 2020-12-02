@@ -1,11 +1,13 @@
 - faq sed data
 - check avaiblity information 
-- rating 
+- get avg rating
+- category rating
+- block user from dublickated rating
 - blog : comments
 - contact 
 - contact api 
-- home
 - auth api 
 - translation 
 - api exceptions
+- gmail meesages
 

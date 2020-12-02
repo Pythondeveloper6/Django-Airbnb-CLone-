@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import FAQ , About
+from .models import FAQ , About , Info
 from property import models as property_models
 from blog import models as blog_models
 from django.contrib.auth.models import User
-from django.db.models import Q
+from django.db.models import Count, Q
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -23,7 +24,7 @@ def home(request):
     villa_count = property_models.Property.objects.filter(category__name='Vella').count()
     suits_count = property_models.Property.objects.filter(category__name='suite').count()
 
-
+    places = property_models.Place.objects.all().annotate(property_count=Count('property_place'))
 
     return render(request,'settings/index.html', {
         'property_category': property_category , 
@@ -35,7 +36,8 @@ def home(request):
         'users_count' : users_count , 
         'appartments_count': villa_count , 
         'villa_count' : villa_count  , 
-        'suits_count' : suits_count
+        'suits_count' : suits_count , 
+        'places':places
     })
 
 
@@ -68,3 +70,19 @@ class AboutView(ListView):
         return context
     
 
+
+
+
+def contact(request):
+    site_info = Info.objects.last()
+
+    if request.method == 'POST':
+        send_mail(
+            'Subject here',
+            'Here is the message.',
+            'from@example.com',
+            ['to@example.com'],
+            fail_silently=False,
+        )
+
+    return render(request,'settings/contact.html',{'site_info': site_info})

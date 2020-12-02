@@ -20,3 +20,5 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image','phone_number','address']
+
+

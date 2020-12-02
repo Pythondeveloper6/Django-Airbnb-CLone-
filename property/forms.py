@@ -1,5 +1,5 @@
 from django import forms
-from . models import PropertyBook
+from . models import PropertyBook , PropertyReview
 
 
 
@@ -9,3 +9,11 @@ class PropertyBookForm(forms.ModelForm):
     class Meta:
         model = PropertyBook
         fields = ['name','date_from','date_to','guest','children']
+
+
+
+
+class PropertyReviewForm(forms.ModelForm):
+    class Meta:
+        model = PropertyReview
+        fields = ['rating','feedback']

@@ -57,7 +57,8 @@
 									<hr>
 									<p class="bottom-area d-flex">
 										<span><i class="icon-map-o"></i> {{property.property.place}}</span>
-										<span class="ml-auto"><a href="">Write Your Feedback</a></span>
+											
+										<span class="ml-auto"><a href="{% url 'accounts:add_feedback' property.property.slug %}">Write Your Feedback</a></span>
 									</p>
 								</div>
 							</div>

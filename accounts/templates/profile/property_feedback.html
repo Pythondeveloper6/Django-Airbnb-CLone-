@@ -55,73 +55,12 @@
 
 
 					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-						<h4 class="mb-5">Check Availability &amp; Booking</h4>
-						{% comment '' %}
-						
-						<div class="fields">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Email">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" id="checkin_date" class="form-control"
-											placeholder="Date from">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control" placeholder="Guest">
-												<option value="0">Guest</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control" placeholder="Children">
-												<option value="0">Children</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<input type="submit" value="Check Availability" class="btn btn-primary py-3">
-									</div>
-								</div>
-							</div>
-						</div>
-						{% endcomment %}
+						<h4 class="mb-5">Add Your &amp; Feedback</h4>
 						<form method=POST>
 						 {% csrf_token %}
 						     {% bootstrap_form form %}
 							{% buttons %}
-								<button type="submit" class="btn btn-primary py-3">Check Availability</button>
+								<button type="submit" class="btn btn-primary py-3">Add Review</button>
 							{% endbuttons %}
 						</form>
 					</div>
@@ -174,74 +113,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-						<h4 class="mb-4">Related Hotels</h4>
-						<div class="row">
-
-							{% for single_property in get_related %}
-							<div class="col-md-4">
-								<div class="destination">
-									<a href="{{single_property.get_absolute_url}}" class="img img-2"
-										style="background-image: url(images/hotel-1.jpg);"></a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="{{single_property.get_absolute_url}}">{{single_property}}</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price per-price">${{single_property.price}}<br><small>/night</small></span>
-											</div>
-										</div>
-										<p>{{single_property.description}}</p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> {{single_property.place}}</span>
-											<span class="ml-auto"><a href="{{single_property.get_absolute_url}}">Book Now</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-						<h4 class="mb-4">Property Feedback</h4>
-						<div class="row">
-
-							{% for review in property.property_review.all %}
-							<div class="col-md-4">
-								<div class="destination">
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="">{{review.author}}</a></h3>
-												<p class="rate">
-													{% with ''|center:review.rating as range %}
-														{% for _ in range %}
-														<i class="icon-star"></i>
-														{% endfor %}
-													{% endwith %}
-										
-												</p>
-											</div>
-										</div>
-										<p>{{review.feedback}}</p>
-										
-									</div>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-
 				</div>
 			</div> <!-- .col-md-8 -->
 		</div>
