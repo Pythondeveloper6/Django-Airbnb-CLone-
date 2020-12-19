@@ -33,6 +33,32 @@ class Property(models.Model):
         return reverse('property:property_detail' , kwargs={'slug':self.slug})
 
 
+    def check_avablity(self):
+        all_reservations = self.property_book.all()
+        now = timezone.now().date()
+        for reservation in all_reservations:
+            if now > reservation.date_to : 
+                return 'Avialable'
+
+            elif now > reservation.date_from and now < reservation.date_to:
+                return 'In Progress'
+        else:
+            return 'Avialable'
+
+
+    def get_avg_rating(self):
+        all_reviews = self.property_review.all()
+        all_ratings = 0
+    
+        if len(all_reviews) > 0 : 
+            for review in all_reviews:
+                all_ratings += review.rating
+            
+            return round(all_ratings / len(all_reviews) , 2)
+        else:
+            return '-'
+
+
 
 class Place(models.Model):
     name = models.CharField(max_length=50)
@@ -113,4 +139,8 @@ class PropertyBook(models.Model):
 
 
 
-            # name = models.ForeignKey(User, related_name='user_book', on_delete=models.CASCADE)
+    def in_progress(self):
+        now = timezone.now().date()
+        return now > self.date_from and now < self.date_to
+
+    in_progress.boolean = True

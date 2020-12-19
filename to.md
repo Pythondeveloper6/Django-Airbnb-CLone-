@@ -1,7 +1,5 @@
-- faq sed data
-- check avaiblity information 
-- get avg rating
-- category rating
+
+- check avaiblity information  [template]
 - block user from dublickated rating
 - blog : 
     - comments
@@ -16,7 +14,7 @@
 - django charts 
 - django tasks 
 - deploy : 
-    - digitalocean 
+    - digitalocean [-----]
     - heroku 
 
 
