@@ -6,6 +6,7 @@ from blog import models as blog_models
 from django.contrib.auth.models import User
 from django.db.models import Count, Q
 from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
 
 
@@ -77,11 +78,16 @@ def contact(request):
     site_info = Info.objects.last()
 
     if request.method == 'POST':
+        subject = request.POST['subject']
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+
         send_mail(
-            'Subject here',
-            'Here is the message.',
-            'from@example.com',
-            ['to@example.com'],
+            subject,
+            f'message from {name} \n email : {email} \n Message : {message}',
+            email,
+            [settings.EMAIL_HOST_USER],
             fail_silently=False,
         )
 
