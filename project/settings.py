@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'settings',
     'django_filters',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'tof',
 ]
 
 REST_FRAMEWORK = {
@@ -144,9 +145,10 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static" , "static_root")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
 ]
 
 MEDIA_URL = '/media/'

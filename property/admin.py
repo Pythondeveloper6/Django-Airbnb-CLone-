@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Property , PropertyImages , PropertyReview , Category , PropertyBook , Place
 from django_summernote.admin import SummernoteModelAdmin
-
+from tof.admin import TofAdmin, TranslationTabularInline
 
 class PropertyAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     summernote_fields = '__all__'
@@ -14,7 +14,13 @@ class PropertyAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
 admin.site.register(Property,PropertyAdmin)
 admin.site.register(PropertyImages)
 admin.site.register(PropertyReview)
-admin.site.register(Category)
+
+
+class CategoryAdmin(TofAdmin):
+    list_display = ('id', 'name')
+    inlines = (TranslationTabularInline, )
+
+admin.site.register(Category , CategoryAdmin)
 
 
 class RoomBookAdmin(admin.ModelAdmin):

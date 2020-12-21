@@ -1,12 +1,13 @@
 - block user from dublickated rating
-- blog : 
-    - comments
-
 - auth api 
-- translation 
 - api exceptions
 - django charts 
 - django tasks 
+
+
+- blog : 
+    - comments
+
 - deploy : 
     - digitalocean [-----]
     - heroku 
