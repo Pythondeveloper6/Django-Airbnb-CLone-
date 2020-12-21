@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-21 20:45+0200\n"
+"POT-Creation-Date: 2020-12-21 20:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "تصنيف"
 msgid "tags"
 msgstr "التاجات"
 
-#: blog/models.py:19
+#: blog/models.py:19 blog/models.py:41
 msgid "slug"
 msgstr "يوارال"
 
@@ -54,3 +54,39 @@ msgstr "مقال"
 #: blog/models.py:29
 msgid "Posts"
 msgstr "مقالات"
+
+#: templates/base.html:43
+msgid "About"
+msgstr "عني"
+
+#: templates/base.html:44
+msgid "Properties"
+msgstr "الوحدات"
+
+#: templates/base.html:45
+msgid "Blog"
+msgstr "المدونه"
+
+#: templates/base.html:46
+msgid "Contact"
+msgstr "الاتصال"
+
+#: templates/base.html:49
+msgid "Profile"
+msgstr "الملف الشخص"
+
+#: templates/base.html:50
+msgid "Add Listing"
+msgstr "اضافه وحده"
+
+#: templates/base.html:51
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: templates/base.html:54
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/base.html:55
+msgid "Signup"
+msgstr "مستخدم جديد"

@@ -2,7 +2,6 @@
 - blog : 
     - comments
 
-- contact api 
 - auth api 
 - translation 
 - api exceptions

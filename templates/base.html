@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,21 +40,36 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="{% url 'property:property_list' %}" class="nav-link">Properties</a></li>
-          <li class="nav-item"><a href="{% url 'blog:post_list' %}" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="{% url 'about:contact' %}" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link"> {% trans 'About' %} </a></li>
+          <li class="nav-item"><a href="{% url 'property:property_list' %}" class="nav-link">{% trans 'Properties' %} </a></li>
+          <li class="nav-item"><a href="{% url 'blog:post_list' %}" class="nav-link">{% trans 'Blog' %} </a></li>
+          <li class="nav-item"><a href="{% url 'about:contact' %}" class="nav-link">{% trans 'Contact' %} </a></li>
           
           {% if request.user.is_authenticated %}
-            <li class="nav-item cta"><a href="{% url 'accounts:profile' %}" class="nav-link"><span>Profile</span></a></li>
-            <li class="nav-item cta"><a href="{% url 'property:property_new' %}" class="nav-link"><span>Add Listing</span></a></li>
-            <li class="nav-item cta"><a href="{% url 'logout' %}" class="nav-link"><span>Logout</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'accounts:profile' %}" class="nav-link"><span>{% trans 'Profile' %} </span></a></li>
+            <li class="nav-item cta"><a href="{% url 'property:property_new' %}" class="nav-link"><span>{% trans 'Add Listing' %}</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'logout' %}" class="nav-link"><span>{% trans 'Logout' %}</span></a></li>
           
             {% else %}
-            <li class="nav-item cta"><a href="{% url 'login' %}" class="nav-link"><span>Login</span></a></li>
-            <li class="nav-item cta"><a href="{% url 'accounts:signup' %}" class="nav-link"><span>Signup</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'login' %}" class="nav-link"><span>{% trans "Login" %}</span></a></li>
+            <li class="nav-item cta"><a href="{% url 'accounts:signup' %}" class="nav-link"><span>{% trans 'Signup' %}</span></a></li>
           {% endif %}
             
+
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go">
+          </form>
 
         </ul>
       </div>
