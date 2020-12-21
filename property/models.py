@@ -41,7 +41,8 @@ class Property(models.Model):
                 return 'Avialable'
 
             elif now > reservation.date_from and now < reservation.date_to:
-                return 'In Progress'
+                reserved_to = reservation.date_to
+                return f'In Progress to {reserved_to}'
         else:
             return 'Avialable'
 

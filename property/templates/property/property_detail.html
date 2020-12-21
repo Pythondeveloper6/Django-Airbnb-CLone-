@@ -54,6 +54,16 @@
 					</div>
 
 
+					{% if property.check_avablity == 'Avialable' %}
+							<h4> Available Today</h4>
+						
+					{% else %}
+							<h4> The Room Is Being Booked  , the reservation {{property.check_avablity}}</h4>
+					  
+					{% endif %}
+
+
+
 					<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 						<h4 class="mb-5">Check Availability &amp; Booking</h4>
 						{% comment '' %}

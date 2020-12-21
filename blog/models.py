@@ -38,7 +38,14 @@ class Post(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    
+    slug = models.SlugField(_('slug') ,blank=True, null=True)
+
+
+    def save(self, *args, **kwargs):
+       if not self.slug:
+           self.slug = slugify(self.name)    
+       super(Category, self).save(*args, **kwargs) # Call the real save() method
+
     class Meta:
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")

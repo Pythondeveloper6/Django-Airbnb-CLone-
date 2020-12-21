@@ -26,8 +26,6 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post
 
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tags"] =  Tag.objects.all()
@@ -37,3 +35,22 @@ class PostDetail(DetailView):
     
 
 
+class PostsByCategory(ListView):
+    model = Post
+
+    def get_queryset(self):
+        objects_list = Post.objects.filter(
+            Q(category__name__icontains=self.kwargs['slug'])
+        )
+        return objects_list
+    
+
+
+class PostsByTags(ListView):
+    model = Post
+
+    def get_queryset(self):
+        objects_list = Post.objects.filter(
+            Q(tags__name__icontains=self.kwargs['slug'])
+        )
+        return objects_list
