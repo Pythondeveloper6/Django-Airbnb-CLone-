@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.db.models import Count, Q
 from django.core.mail import send_mail
 from django.conf import settings
+from .tasks import send_mail_task
 # Create your views here.
 
 
@@ -83,12 +84,8 @@ def contact(request):
         email = request.POST['email']
         message = request.POST['message']
 
-        send_mail(
-            subject,
-            f'message from {name} \n email : {email} \n Message : {message}',
-            email,
-            [settings.EMAIL_HOST_USER],
-            fail_silently=False,
-        )
+
+        send_mail_task.delay(subject , name,email,message)
+
 
     return render(request,'settings/contact.html',{'site_info': site_info})

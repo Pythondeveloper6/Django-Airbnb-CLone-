@@ -29,6 +29,8 @@ urlpatterns = [
     path('blog/' , include('blog.urls' , namespace='blog')),
     path('summernote/', include('django_summernote.urls')),
     path('' , include('settings.urls' , namespace='about')),
+    path('auth/', include('dj_rest_auth.urls')),
+    path('auth/registration/', include('dj_rest_auth.registration.urls'))
 
 ]
 

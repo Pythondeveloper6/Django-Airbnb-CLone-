@@ -1,18 +1,14 @@
-- block user from dublickated rating
-- auth api 
-- api exceptions
+
+- get_list_or_404
+- translation 
+
 - django charts 
-- django tasks 
-
-
-- blog : 
-    - comments
 
 - deploy : 
     - digitalocean [-----]
     - heroku 
 
-
+- block user from dublickated rating
 
 
 01-DjangoPrivate
