@@ -67,6 +67,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -163,7 +164,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR , "media")
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # LOGIN_REDIRECT_URL = '/accounts/profile'
 
 SUMMERNOTE_THEME = 'bs4'
