@@ -17,7 +17,7 @@ class Post(models.Model):
     category = models.ForeignKey('Category', related_name='post_category', on_delete=models.CASCADE , verbose_name=_('category'))
     tags = TaggableManager(_('tags') ,blank=True)
     slug = models.SlugField(_('slug') ,blank=True, null=True)
-
+    actvie = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
        if not self.slug:

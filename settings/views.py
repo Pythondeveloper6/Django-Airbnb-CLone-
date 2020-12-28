@@ -36,7 +36,7 @@ def home(request):
         'popular_villa' : popular_villa , 
         'popular_suits' : popular_suits ,
         'users_count' : users_count , 
-        'appartments_count': villa_count , 
+        'appartments_count': appartments_count , 
         'villa_count' : villa_count  , 
         'suits_count' : suits_count , 
         'places':places
@@ -89,3 +89,24 @@ def contact(request):
 
 
     return render(request,'settings/contact.html',{'site_info': site_info})
+
+
+
+
+def dashboard(request):
+    
+    users_count = User.objects.all().count()
+    appartments_count = property_models.Property.objects.filter(category__name='Apparment').count()
+    villa_count = property_models.Property.objects.filter(category__name='Vella').count()
+    suits_count = property_models.Property.objects.filter(category__name='suite').count()
+    posts = blog_models.Post.objects.all().count()
+    booking = property_models.PropertyBook.objects.all().count()
+
+    return render(request,'settings/dashboard.html',{
+        'users_count' : users_count , 
+        'appartments_count': appartments_count , 
+        'villa_count' : villa_count  , 
+        'suits_count' : suits_count ,  
+        'posts_count' : posts , 
+        'booking_count' : booking
+    })
