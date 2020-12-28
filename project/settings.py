@@ -25,7 +25,7 @@ SECRET_KEY = 'rekgb+ec4886x96t2l*d27_3%dvslatpe&t5rls(x5@vo+k7xb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://airbnb6.herokuapp.com/" , "127.0.0.1"]
+ALLOWED_HOSTS = ["airbnb6.herokuapp.com" , "127.0.0.1"]
 
 
 # Application definition
