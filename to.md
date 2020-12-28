@@ -3,9 +3,18 @@
 
 - deploy : 
     - digitalocean [-----]
-    - heroku 
+
 
 - block user from dublickated rating
+domain 
 
 
-01-DjangoPrivate
+
+ - Interview 
+ - WHat is next 
+
+
+
+
+
+ 01012311747
