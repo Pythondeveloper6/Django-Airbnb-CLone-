@@ -37,7 +37,7 @@
             <p class="browse d-md-flex">
 				
 				{% for category in property_category %}	
-            		<span class="d-flex justify-content-md-center align-items-md-center"><a href="{% url 'property:property_by_category' category %}"><i class="{{category.icon}}"></i>{{category|title}}</a></span>
+            		<span class="d-flex justify-content-md-center align-items-md-center"><a href="{% url 'property:property_by_category' category %}"><i class="{{category.icon}}"></i>{{category.name}}</a></span>
 				{% endfor %}
             </p>
           </div>

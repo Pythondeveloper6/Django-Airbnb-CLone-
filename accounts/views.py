@@ -65,6 +65,8 @@ def my_reservation(request):
 
 def add_feedback(request , slug):
     property = get_object_or_404(Property , slug=slug)
+
+    
     if request.method == 'POST':
         form = PropertyReviewForm(request.POST)
         if form.is_valid():
